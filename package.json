@@ -52,7 +52,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "shell-quote": "^1.7.2",
-    "typescript": "~3.9"
+    "typescript": "~3.9",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/pako": "^1.0.3",

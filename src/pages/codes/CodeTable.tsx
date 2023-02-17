@@ -10,6 +10,7 @@ interface Props {
 }
 
 export function CodeTable({ codes }: Props): JSX.Element {
+  
   return (
     <div className="d-lg-flex flex-wrap">
       {codes.map((code, index) => {
@@ -26,6 +27,7 @@ export function CodeTable({ codes }: Props): JSX.Element {
                 Contracts: {code.contracts_aggregate.aggregate.count}
                 <br />
                 Size: {(code.size / 1024).toFixed(2)} KB
+                {/* {console.log("VV",version)} */}
                 {version.version && (
                   <>
                      <br />

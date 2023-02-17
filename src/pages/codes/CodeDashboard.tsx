@@ -53,6 +53,7 @@ export function CodeDashboardPage(): JSX.Element {
               <p>An Error occurred when loading codes</p>
             ) : codes.codes.length !== 0 ? (
               <div>
+                
                 <CodeTable codes={codes.codes} />
                 <Pagination totalItems={codes.codes_aggregate.aggregate.count} step={PAGE_SIZE} onChangePage={handlePage} />
               </div>

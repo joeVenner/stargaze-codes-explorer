@@ -13,10 +13,10 @@ export interface BackendSettings {
 }
 
 const devnetStargateSettings: BackendSettings = {
-  nodeUrls: ["http://localhost:26659"],
-  denominations: ["ucosm", "ustake"],
-  addressPrefix: "wasm",
-  gasPrice: GasPrice.fromString("0.25ucosm"),
+  nodeUrls: ["https://rpc.stargaze-apis.com"],
+  denominations: ["ustars"],
+  addressPrefix: "stars",
+  gasPrice: GasPrice.fromString("0.25ustars"),
 };
 
 const uniSettings: BackendSettings = {
@@ -127,16 +127,16 @@ const osmotSetting: BackendSettings = {
   contractsUrl: ""
 };
 
-const juno1Settings: BackendSettings = {
-  nodeUrls: ["https://rpc-juno.itastakers.com"],
-  denominations: ["ujuno"],
-  addressPrefix: "juno",
-  gasPrice: GasPrice.fromString("0.0025ujuno"),
+const starsSettings: BackendSettings = {
+  nodeUrls: ["https://rpc.stargaze-apis.com"],
+  denominations: ["ustars"],
+  addressPrefix: "stars",
+  gasPrice: GasPrice.fromString("0.25ustars"),
   keplrChainInfo: {
-    rpc: "https://rpc-juno.itastakers.com:443",
-    rest: "https://lcd-juno.itastakers.com:443",
-    chainId: "juno-1",
-    chainName: "Juno",
+    rpc: "https://rpc.stargaze-apis.com/",
+    rest: "https://rest.stargaze-apis.com/",
+    chainId: "stargaze-1",
+    chainName: "stargaze",
     stakeCurrency: {
       coinDenom: "JUNO",
       coinMinimalDenom: "ujuno",
@@ -146,29 +146,29 @@ const juno1Settings: BackendSettings = {
       coinType: 118,
     },
     bech32Config: {
-      bech32PrefixAccAddr: "juno",
-      bech32PrefixAccPub: "junopub",
-      bech32PrefixValAddr: "junovaloper",
-      bech32PrefixValPub: "junovaloperpub",
-      bech32PrefixConsAddr: "junovalcons",
-      bech32PrefixConsPub: "junovalconspub",
+      bech32PrefixAccAddr: "stars",
+      bech32PrefixAccPub: "starspub",
+      bech32PrefixValAddr: "starsvaloper",
+      bech32PrefixValPub: "starsvaloperpub",
+      bech32PrefixConsAddr: "starsvalcons",
+      bech32PrefixConsPub: "starsvalconspub",
     },
     currencies: [
       {
-        coinDenom: "JUNO",
-        coinMinimalDenom: "ujuno",
+        coinDenom: "stars",
+        coinMinimalDenom: "ustars",
         coinDecimals: 6,
       },
     ],
     feeCurrencies: [
       {
-        coinDenom: "JUNO",
-        coinMinimalDenom: "ujuno",
+        coinDenom: "stars",
+        coinMinimalDenom: "ustars",
         coinDecimals: 6,
       },
     ],
     features: ["stargate", "ibc-transfer", "cosmwasm", "no-legacy-stdTx", "ibc-go"],
-    explorerUrlToTx: "https://mintscan.io/juno/txs/{txHash}",
+    explorerUrlToTx: "https://mintscan.io/stargaze/txs/{txHash}",
 
   },
   contractsUrl: ""
@@ -177,12 +177,12 @@ const juno1Settings: BackendSettings = {
 const knownBackends: Partial<Record<string, BackendSettings>> = {
   devnetStargate: devnetStargateSettings,
   uninet: uniSettings,
-  juno1: juno1Settings,
+  stars: starsSettings,
   osmot: osmotSetting,
 };
 
 export function getCurrentBackend(): BackendSettings {
-  const id = process.env.REACT_APP_BACKEND || "uninet";
+  const id = "stars";
   const backend = knownBackends[id];
   if (!backend) {
     throw new Error(`No backend found for the given ID "${id}"`);

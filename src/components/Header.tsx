@@ -10,7 +10,7 @@ export function Header(): JSX.Element {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark main-navbar">
       <Link className="navbar-brand site-title" to={`/`}>
-        Juno Blueprints
+        <img src='/logo.svg' alt="logo" width={124}/>
       </Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -18,12 +18,6 @@ export function Header(): JSX.Element {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-            <Link className="nav-link" to={`/`}>Contracts</Link>
-          </li>
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/tokens`}>Tokens</Link>
-          </li>
           <li className="nav-item active">
             <Link className="nav-link" to={`/codes`}>Codes</Link>
           </li>

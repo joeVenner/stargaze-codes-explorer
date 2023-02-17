@@ -18,6 +18,13 @@ export interface CodeData {
   readonly codeId: number;
   readonly checksum: string;
   readonly creator: string;
+  readonly version: any;
+  readonly contract: any;
+
+}
+export interface ContractVersion {
+  readonly checksum: string;
+  readonly creator: string;
 }
 
 interface Props {
@@ -29,7 +36,7 @@ interface InstantiationInfo {
   readonly instantiations: number;
 }
 
-export function Code({ data, index }: Props): JSX.Element {
+export function Code({ data, index}: Props): JSX.Element {
   const { client } = React.useContext(ClientContext);
   const [instantiationInfo, setInstantiationInfo] = React.useState<
     InstantiationInfo | ErrorState | LoadingState
@@ -49,6 +56,7 @@ export function Code({ data, index }: Props): JSX.Element {
   }, [data.codeId]);
 
   return (
+    
     <div className={"flex-element-two-two mb-3" + (index % 2 ? " pl-lg-2" : " pr-lg-2")}>
       <Link to={`/codes/${data.codeId}`} className="code-content">
         <div className="id">#{data.codeId}</div>
@@ -63,6 +71,16 @@ export function Code({ data, index }: Props): JSX.Element {
             : isErrorState(instantiationInfo)
             ? "Error"
             : instantiationInfo.instantiations}
+          {/* <br /> */}
+           {data.version && (
+                  <>
+                     <br />
+                    Package: {" "}
+                    <span className="code-package">{data.contract}</span>
+                    <br />
+                    Version: {data.version}
+                  </>
+          )}
         </div>
       </Link>
     </div>

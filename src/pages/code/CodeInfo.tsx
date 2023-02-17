@@ -30,6 +30,8 @@ export function CodeInfo({ code, uploadTxHash }: Props): JSX.Element {
           Creator: <AccountLink address={code.creator} maxLength={null} />
         </li>
         <li className="list-group-item">Checksum: {code.checksum}</li>
+        
+        
       </ul>
     </div>
   );
