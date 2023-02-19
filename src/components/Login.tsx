@@ -72,7 +72,7 @@ export function Login(): JSX.Element {
       <>
         <button
           type="button"
-          className="btn btn-primary dropdown-toggle"
+          className="btn btn-primary button-login dropdown-toggle"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"

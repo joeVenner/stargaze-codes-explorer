@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { Login } from "./Login";
 import { UserAddress } from "./UserAddress";
-import { settings } from "../settings";
 
 export function Header(): JSX.Element {
   return (
@@ -26,7 +25,7 @@ export function Header(): JSX.Element {
           </li>
         </ul>
         <div className="form-inline my-2">
-          {settings.backend.keplrChainInfo && (<span className="badge badge-warning network-badge">{settings.backend.keplrChainInfo?.chainId}</span>)}
+          {/* {settings.backend.keplrChainInfo && (<span className="badge network-badge">{settings.backend.keplrChainInfo?.chainId}</span>)} */}
           <UserAddress />
           <ul className="login-container">
             <li className="nav-item dropdown">

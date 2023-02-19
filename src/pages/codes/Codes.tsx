@@ -55,7 +55,7 @@ export function Codes(): JSX.Element {
           try {
             C_version = JSON.parse(atob(contractData.data));
           } catch (error) {
-            console.error(error);
+            console.error("Code's info not available");
           }
         
           return {

@@ -32,12 +32,10 @@ import {
   msgTimeoutTypeUrl,
 } from "../ui-utils/txs";
 import { FlexibleRouter } from "./FlexibleRouter";
-import { DashboardPage } from "../pages/contract/DashboardPage";
-import { TokenPage } from "../pages/tokens/TokenPage";
-import { CodeDashboardPage } from "../pages/codes/CodeDashboard";
 import { CodesPage } from "../pages/codes/CodesPage";
 import { MsgAcknowledgement, MsgRecvPacket, MsgTimeout } from "cosmjs-types/ibc/core/channel/v1/tx";
 import { ToolsPage } from "../pages/contract/ToolsPage";
+import ParticlesBg from "./ParticlesBG";
 
 const { nodeUrls, contractsUrl } = settings.backend;
 const typeRegistry = new Registry([
@@ -87,10 +85,13 @@ export function App(): JSX.Element {
     setContextValue((prevContextValue) => ({ ...prevContextValue, userAddress: userAddress }));
   }, [userAddress]);
 
+  
   return (
     <ClientContext.Provider value={contextValue}>
       <FlexibleRouter type={settings.deployment.routerType}>
-        {contractsUrl ? (
+        <ParticlesBg/>
+
+        {/* {contractsUrl ? (
           <Switch>
             <Route exact path="/codes" component={CodeDashboardPage} />
             <Route exact path="/tokens" component={TokenPage} />
@@ -102,7 +103,8 @@ export function App(): JSX.Element {
             <Route path="/accounts/:address" component={AccountPage} />
             <Route component={DashboardPage} />
           </Switch>
-        ): (
+        ): ( */}
+
           <Switch>
             <Route exact path="/codes" component={CodesPage} />
             <Route path="/codes/new" component={NewCodePage} />
@@ -113,7 +115,8 @@ export function App(): JSX.Element {
             <Route path="/accounts/:address" component={AccountPage} />
             <Route component={() => <Redirect to="/codes" />} />
           </Switch>
-        )}
+
+        {/* )} */}
       </FlexibleRouter>
     </ClientContext.Provider>
   );
